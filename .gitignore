@@ -1,0 +1,9 @@
+notes.md
+steps.md
+
+.venv/
+data-analysis/
+
+datasets/
+
+*.db
