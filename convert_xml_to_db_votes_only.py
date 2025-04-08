@@ -5,78 +5,15 @@ import os
 import sqlite3
 import xml.etree.ElementTree as ET
 
-# Delete old DB if it exists
-if os.path.exists("stackoverflow.db"):
-    os.remove("stackoverflow.db")
-    print("🗑️ Old database removed.")
 
 # File paths
 xml_files = {    
-    "comments": "datasets/Comments.xml",
-    "posts": "datasets/Posts.xml",
-    "tags": "datasets/Tags.xml",
-    "users": "datasets/Users.xml",
     "votes": "datasets/Votes.xml"
 }
 db_file = "stackoverflow.db"
 
-# Table schemas with correct types
+# I am running only votes table
 table_schemas = {
-    "comments": {
-        "columns": [
-            ("Id", "INTEGER PRIMARY KEY"),
-            ("PostId", "INTEGER"),
-            ("Score", "INTEGER"),
-            ("Text", "TEXT"),
-            ("CreationDate", "TEXT"),
-            ("UserId", "INTEGER")
-        ]
-    },
-    "posts": {
-        "columns": [
-            ("Id", "INTEGER PRIMARY KEY"),
-            ("PostTypeId", "INTEGER"),
-            ("AcceptedAnswerId", "INTEGER"),
-            ("CreationDate", "TEXT"),
-            ("Score", "INTEGER"),
-            ("ViewCount", "INTEGER"),
-            ("Body", "TEXT"),
-            ("OwnerUserId", "INTEGER"),
-            ("OwnerDisplayName", "TEXT"),
-            ("LastEditorUserId", "INTEGER"),
-            ("LastEditorDisplayName", "TEXT"),
-            ("LastEditDate", "TEXT"),
-            ("LastActivityDate", "TEXT"),
-            ("Title", "TEXT"),
-            ("Tags", "TEXT"),
-            ("AnswerCount", "INTEGER"),
-            ("CommentCount", "INTEGER"),
-            ("FavoriteCount", "INTEGER"),
-            ("ContentLicense", "TEXT")
-        ]
-    },
-    "tags": {
-        "columns": [
-            ("Id", "INTEGER PRIMARY KEY"),
-            ("TagName", "TEXT"),
-            ("Count", "INTEGER"),
-            ("ExcerptPostId", "INTEGER"),
-            ("WikiPostId", "INTEGER")
-        ]
-    },    
-    "users": {
-        "columns": [
-            ("Id", "INTEGER PRIMARY KEY"),
-            ("Reputation", "INTEGER"),
-            ("CreationDate", "TEXT"),
-            ("DisplayName", "TEXT"),
-            ("LastAccessDate", "TEXT"),
-            ("AboutMe", "TEXT"),
-            ("Views", "INTEGER"),
-            ("UpVotes", "INTEGER"),
-            ("DownVotes", "INTEGER")
-        ]
-    },
     "votes": {
         "columns": [
             ("Id", "INTEGER PRIMARY KEY"),
